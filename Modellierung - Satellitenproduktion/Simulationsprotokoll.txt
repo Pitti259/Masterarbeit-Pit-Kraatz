@@ -1,0 +1,261 @@
+Simulationsmodell zur Skalierbarkeit der Satellitenfertigung
+Alle Zeiten in normierten Zeiteinheiten (ZE).
+Je Konfiguration 30 Wiederholungen; angegeben sind Mittelwert und halbe Breite des 95-%-Konfidenzintervalls.
+==========================================================================
+
+V  VERIFIKATION UND PLAUSIBILISIERUNG
+
+   Grenzwerttests (Konfiguration 5 x 6, 3 Pruefstationen, je 30 Laeufe, Programmdauer in ZE)
+     Basislauf                        492.7
+     ohne Lerneffekt                  541.9   erwartet: laenger
+     ohne Mindestzeit                 353.9   erwartet: kuerzer
+     ohne Variantenwechsel            447.4   erwartet: kuerzer
+     ohne Streuung                    436.6   erwartet: kuerzer
+     volle Fertigungstiefe            713.8   erwartet: laenger
+     ohne Automatisierungsvorteil     588.4   erwartet: laenger
+     eine Pruefstation                510.0   erwartet: laenger
+
+   Invarianzen ueber die Konfigurationen (je 30 Laeufe)
+     Erwartet werden 0,30 * (180 - L) / 180 Anpassungsvorgaenge und 0,63 Fehlteile je Satellit.
+     Konfig      Anpassungen  erwartet   Fehlteile je Satellit
+      1 x 30       0.291       0.298          0.635
+      2 x 15       0.303       0.297          0.629
+      3 x 10       0.302       0.295          0.639
+      5 x  6       0.285       0.292          0.642
+      6 x  5       0.293       0.290          0.627
+     10 x  3       0.280       0.283          0.620
+     15 x  2       0.275       0.275          0.630
+
+   Lernkurve gegen die Quelle (480 / 360 Minuten, 648. Einheit)
+     b = 0.2345   t(648) = 386.3 min   Reduktion 19.52 %   (Quelle: 19,4 %)
+
+   Analytische Untergrenzen (Referenzfall)
+     Stationsbedarf je Satellit                     55.9 ZE
+     Untergrenze Fertigung bei vollem Lerneffekt   257.4 ZE
+     Untergrenze Pruefung bei K = 1                 450.0 ZE
+     Untergrenze Pruefung bei K = 2                 225.0 ZE
+     Untergrenze Pruefung bei K = 3                 150.0 ZE
+     Kein simulierter Wert darf diese Grenzen unterschreiten.
+
+E1  PRODUKTIONSORGANISATION x PRUEFKAPAZITAET
+   K = 1    1 x 30   Programmdauer   607.5 +-  8.8   Hochlauf  191.4   Auslastung Pruefung  74.4 %
+   K = 1    2 x 15   Programmdauer   548.7 +-  5.0   Hochlauf  170.7   Auslastung Pruefung  82.6 %
+   K = 1    3 x 10   Programmdauer   527.7 +-  4.0   Hochlauf  163.8   Auslastung Pruefung  85.2 %
+   K = 1    5 x  6   Programmdauer   510.0 +-  3.0   Hochlauf  139.2   Auslastung Pruefung  88.4 %
+   K = 1    6 x  5   Programmdauer   506.3 +-  2.9   Hochlauf  145.7   Auslastung Pruefung  88.9 %
+   K = 1   10 x  3   Programmdauer   495.9 +-  3.5   Hochlauf  132.2   Auslastung Pruefung  90.4 %
+   K = 1   15 x  2   Programmdauer   491.9 +-  4.0   Hochlauf  130.0   Auslastung Pruefung  91.5 %
+   K = 2    1 x 30   Programmdauer   602.7 +-  7.2   Hochlauf  159.4   Auslastung Pruefung  37.2 %
+   K = 2    2 x 15   Programmdauer   549.6 +-  5.7   Hochlauf  135.0   Auslastung Pruefung  40.9 %
+   K = 2    3 x 10   Programmdauer   522.2 +-  3.2   Hochlauf  136.0   Auslastung Pruefung  43.1 %
+   K = 2    5 x  6   Programmdauer   488.9 +-  3.2   Hochlauf  128.5   Auslastung Pruefung  45.9 %
+   K = 2    6 x  5   Programmdauer   484.2 +-  3.4   Hochlauf  122.5   Auslastung Pruefung  46.2 %
+   K = 2   10 x  3   Programmdauer   452.3 +-  3.5   Hochlauf  108.0   Auslastung Pruefung  49.6 %
+   K = 2   15 x  2   Programmdauer   428.2 +-  4.7   Hochlauf   89.0   Auslastung Pruefung  52.4 %
+   K = 3    1 x 30   Programmdauer   605.6 +-  7.6   Hochlauf  152.8   Auslastung Pruefung  24.7 %
+   K = 3    2 x 15   Programmdauer   550.3 +-  5.0   Hochlauf  140.9   Auslastung Pruefung  27.2 %
+   K = 3    3 x 10   Programmdauer   522.2 +-  5.0   Hochlauf  130.9   Auslastung Pruefung  28.9 %
+   K = 3    5 x  6   Programmdauer   492.7 +-  3.5   Hochlauf  128.1   Auslastung Pruefung  30.3 %
+   K = 3    6 x  5   Programmdauer   484.1 +-  3.2   Hochlauf  122.0   Auslastung Pruefung  31.0 %
+   K = 3   10 x  3   Programmdauer   450.6 +-  3.9   Hochlauf  103.9   Auslastung Pruefung  33.4 %
+   K = 3   15 x  2   Programmdauer   430.8 +-  3.8   Hochlauf   85.5   Auslastung Pruefung  34.8 %
+
+E2  STANDARDISIERUNG x AUTOMATISIERUNG
+    1 x 30  K = 1  Standardisierung niedrig Automatisierung niedrig     732.8 +-  7.3
+    1 x 30  K = 1  Standardisierung niedrig Automatisierung mittel      643.8 +-  5.7
+    1 x 30  K = 1  Standardisierung niedrig Automatisierung hoch        555.7 +-  5.7
+    1 x 30  K = 1  Standardisierung mittel  Automatisierung niedrig     701.2 +-  7.2
+    1 x 30  K = 1  Standardisierung mittel  Automatisierung mittel      607.5 +-  8.8
+    1 x 30  K = 1  Standardisierung mittel  Automatisierung hoch        522.3 +-  5.8
+    1 x 30  K = 1  Standardisierung hoch    Automatisierung niedrig     672.8 +-  9.1
+    1 x 30  K = 1  Standardisierung hoch    Automatisierung mittel      579.1 +-  8.0
+    1 x 30  K = 1  Standardisierung hoch    Automatisierung hoch        511.5 +-  4.6
+    1 x 30  K = 3  Standardisierung niedrig Automatisierung niedrig     731.7 +-  6.3
+    1 x 30  K = 3  Standardisierung niedrig Automatisierung mittel      640.6 +-  7.1
+    1 x 30  K = 3  Standardisierung niedrig Automatisierung hoch        555.8 +-  8.1
+    1 x 30  K = 3  Standardisierung mittel  Automatisierung niedrig     691.0 +-  7.5
+    1 x 30  K = 3  Standardisierung mittel  Automatisierung mittel      605.6 +-  7.6
+    1 x 30  K = 3  Standardisierung mittel  Automatisierung hoch        506.8 +-  6.3
+    1 x 30  K = 3  Standardisierung hoch    Automatisierung niedrig     670.8 +-  8.5
+    1 x 30  K = 3  Standardisierung hoch    Automatisierung mittel      575.3 +-  7.7
+    1 x 30  K = 3  Standardisierung hoch    Automatisierung hoch        477.4 +-  6.9
+    5 x  6  K = 1  Standardisierung niedrig Automatisierung niedrig     622.7 +-  3.8
+    5 x  6  K = 1  Standardisierung niedrig Automatisierung mittel      526.3 +-  3.5
+    5 x  6  K = 1  Standardisierung niedrig Automatisierung hoch        492.5 +-  3.8
+    5 x  6  K = 1  Standardisierung mittel  Automatisierung niedrig     591.4 +-  4.1
+    5 x  6  K = 1  Standardisierung mittel  Automatisierung mittel      510.0 +-  3.0
+    5 x  6  K = 1  Standardisierung mittel  Automatisierung hoch        485.9 +-  3.2
+    5 x  6  K = 1  Standardisierung hoch    Automatisierung niedrig     570.4 +-  2.7
+    5 x  6  K = 1  Standardisierung hoch    Automatisierung mittel      503.7 +-  3.2
+    5 x  6  K = 1  Standardisierung hoch    Automatisierung hoch        489.2 +-  3.3
+    5 x  6  K = 3  Standardisierung niedrig Automatisierung niedrig     622.8 +-  4.9
+    5 x  6  K = 3  Standardisierung niedrig Automatisierung mittel      528.7 +-  4.1
+    5 x  6  K = 3  Standardisierung niedrig Automatisierung hoch        426.4 +-  4.1
+    5 x  6  K = 3  Standardisierung mittel  Automatisierung niedrig     588.4 +-  4.5
+    5 x  6  K = 3  Standardisierung mittel  Automatisierung mittel      492.7 +-  3.5
+    5 x  6  K = 3  Standardisierung mittel  Automatisierung hoch        394.0 +-  2.7
+    5 x  6  K = 3  Standardisierung hoch    Automatisierung niedrig     570.1 +-  4.1
+    5 x  6  K = 3  Standardisierung hoch    Automatisierung mittel      466.9 +-  3.8
+    5 x  6  K = 3  Standardisierung hoch    Automatisierung hoch        368.5 +-  2.8
+
+E3  FERTIGUNGSTIEFE
+   K = 1  f = 0.50    1 x 30     546.9 +-  7.8   Fehlteile je Satellit 0.87
+   K = 1  f = 0.50    2 x 15     503.0 +-  4.0   Fehlteile je Satellit 0.90
+   K = 1  f = 0.50    3 x 10     496.1 +-  3.3   Fehlteile je Satellit 0.89
+   K = 1  f = 0.50    5 x  6     488.1 +-  3.4   Fehlteile je Satellit 0.89
+   K = 1  f = 0.50    6 x  5     490.8 +-  3.2   Fehlteile je Satellit 0.89
+   K = 1  f = 0.50   10 x  3     486.6 +-  3.3   Fehlteile je Satellit 0.89
+   K = 1  f = 0.50   15 x  2     481.0 +-  3.3   Fehlteile je Satellit 0.92
+   K = 1  f = 0.65    1 x 30     607.5 +-  8.8   Fehlteile je Satellit 0.62
+   K = 1  f = 0.65    2 x 15     548.7 +-  5.0   Fehlteile je Satellit 0.62
+   K = 1  f = 0.65    3 x 10     527.7 +-  4.0   Fehlteile je Satellit 0.64
+   K = 1  f = 0.65    5 x  6     510.0 +-  3.0   Fehlteile je Satellit 0.62
+   K = 1  f = 0.65    6 x  5     506.3 +-  2.9   Fehlteile je Satellit 0.64
+   K = 1  f = 0.65   10 x  3     495.9 +-  3.5   Fehlteile je Satellit 0.63
+   K = 1  f = 0.65   15 x  2     491.9 +-  4.0   Fehlteile je Satellit 0.63
+   K = 1  f = 0.80    1 x 30     668.8 +-  6.7   Fehlteile je Satellit 0.36
+   K = 1  f = 0.80    2 x 15     632.7 +-  4.1   Fehlteile je Satellit 0.36
+   K = 1  f = 0.80    3 x 10     613.1 +-  3.9   Fehlteile je Satellit 0.37
+   K = 1  f = 0.80    5 x  6     587.6 +-  4.1   Fehlteile je Satellit 0.37
+   K = 1  f = 0.80    6 x  5     581.9 +-  3.6   Fehlteile je Satellit 0.37
+   K = 1  f = 0.80   10 x  3     545.7 +-  5.3   Fehlteile je Satellit 0.37
+   K = 1  f = 0.80   15 x  2     523.4 +-  5.3   Fehlteile je Satellit 0.37
+   K = 3  f = 0.50    1 x 30     541.3 +-  6.7   Fehlteile je Satellit 0.90
+   K = 3  f = 0.50    2 x 15     467.4 +-  4.9   Fehlteile je Satellit 0.92
+   K = 3  f = 0.50    3 x 10     431.1 +-  4.0   Fehlteile je Satellit 0.90
+   K = 3  f = 0.50    5 x  6     401.5 +-  4.2   Fehlteile je Satellit 0.89
+   K = 3  f = 0.50    6 x  5     388.4 +-  3.8   Fehlteile je Satellit 0.90
+   K = 3  f = 0.50   10 x  3     362.8 +-  2.9   Fehlteile je Satellit 0.89
+   K = 3  f = 0.50   15 x  2     341.8 +-  3.3   Fehlteile je Satellit 0.90
+   K = 3  f = 0.65    1 x 30     605.6 +-  7.6   Fehlteile je Satellit 0.64
+   K = 3  f = 0.65    2 x 15     550.3 +-  5.0   Fehlteile je Satellit 0.63
+   K = 3  f = 0.65    3 x 10     522.2 +-  5.0   Fehlteile je Satellit 0.64
+   K = 3  f = 0.65    5 x  6     492.7 +-  3.5   Fehlteile je Satellit 0.64
+   K = 3  f = 0.65    6 x  5     484.1 +-  3.2   Fehlteile je Satellit 0.63
+   K = 3  f = 0.65   10 x  3     450.6 +-  3.9   Fehlteile je Satellit 0.62
+   K = 3  f = 0.65   15 x  2     430.8 +-  3.8   Fehlteile je Satellit 0.63
+   K = 3  f = 0.80    1 x 30     676.4 +-  6.6   Fehlteile je Satellit 0.37
+   K = 3  f = 0.80    2 x 15     631.2 +-  3.7   Fehlteile je Satellit 0.36
+   K = 3  f = 0.80    3 x 10     614.6 +-  4.5   Fehlteile je Satellit 0.36
+   K = 3  f = 0.80    5 x  6     586.9 +-  4.6   Fehlteile je Satellit 0.36
+   K = 3  f = 0.80    6 x  5     583.0 +-  5.3   Fehlteile je Satellit 0.37
+   K = 3  f = 0.80   10 x  3     545.3 +-  5.0   Fehlteile je Satellit 0.36
+   K = 3  f = 0.80   15 x  2     517.5 +-  5.3   Fehlteile je Satellit 0.36
+
+   Kipppunkt: ab welcher Zuliferzeit dreht die Rangfolge? (5 x 6, K = 3)
+     Wartezeit    f = 0,50   f = 0,65   f = 0,80
+      3 ZE         401.5      492.7      586.9
+      6 ZE         466.9      541.3      614.2
+     10 ZE         574.4      607.9      649.6
+     15 ZE         700.4      721.9      717.6
+     20 ZE         830.6      822.2      779.9
+     30 ZE        1124.4     1009.0      911.0
+
+E4  PRODUKTPORTFOLIO x STANDARDISIERUNG
+    1 x 30  K = 1  Variantenwechsel 0.10  Standardisierung niedrig     598.6 +-  9.4
+    1 x 30  K = 1  Variantenwechsel 0.10  Standardisierung mittel      579.5 +-  7.6
+    1 x 30  K = 1  Variantenwechsel 0.10  Standardisierung hoch        562.6 +-  6.8
+    1 x 30  K = 1  Variantenwechsel 0.30  Standardisierung niedrig     643.8 +-  5.7
+    1 x 30  K = 1  Variantenwechsel 0.30  Standardisierung mittel      607.5 +-  8.8
+    1 x 30  K = 1  Variantenwechsel 0.30  Standardisierung hoch        579.1 +-  8.0
+    1 x 30  K = 1  Variantenwechsel 0.50  Standardisierung niedrig     670.4 +-  6.5
+    1 x 30  K = 1  Variantenwechsel 0.50  Standardisierung mittel      627.5 +-  9.1
+    1 x 30  K = 1  Variantenwechsel 0.50  Standardisierung hoch        582.9 +-  5.6
+    1 x 30  K = 3  Variantenwechsel 0.10  Standardisierung niedrig     598.4 +-  7.1
+    1 x 30  K = 3  Variantenwechsel 0.10  Standardisierung mittel      579.7 +-  9.8
+    1 x 30  K = 3  Variantenwechsel 0.10  Standardisierung hoch        562.9 +-  7.0
+    1 x 30  K = 3  Variantenwechsel 0.30  Standardisierung niedrig     640.6 +-  7.1
+    1 x 30  K = 3  Variantenwechsel 0.30  Standardisierung mittel      605.6 +-  7.6
+    1 x 30  K = 3  Variantenwechsel 0.30  Standardisierung hoch        575.3 +-  7.7
+    1 x 30  K = 3  Variantenwechsel 0.50  Standardisierung niedrig     669.7 +- 10.2
+    1 x 30  K = 3  Variantenwechsel 0.50  Standardisierung mittel      625.5 +-  8.6
+    1 x 30  K = 3  Variantenwechsel 0.50  Standardisierung hoch        582.9 +-  6.4
+    5 x  6  K = 1  Variantenwechsel 0.10  Standardisierung niedrig     506.3 +-  3.1
+    5 x  6  K = 1  Variantenwechsel 0.10  Standardisierung mittel      506.5 +-  3.6
+    5 x  6  K = 1  Variantenwechsel 0.10  Standardisierung hoch        503.5 +-  3.5
+    5 x  6  K = 1  Variantenwechsel 0.30  Standardisierung niedrig     526.3 +-  3.5
+    5 x  6  K = 1  Variantenwechsel 0.30  Standardisierung mittel      510.0 +-  3.0
+    5 x  6  K = 1  Variantenwechsel 0.30  Standardisierung hoch        503.7 +-  3.2
+    5 x  6  K = 1  Variantenwechsel 0.50  Standardisierung niedrig     561.5 +-  4.0
+    5 x  6  K = 1  Variantenwechsel 0.50  Standardisierung mittel      520.5 +-  3.0
+    5 x  6  K = 1  Variantenwechsel 0.50  Standardisierung hoch        509.4 +-  2.7
+    5 x  6  K = 3  Variantenwechsel 0.10  Standardisierung niedrig     475.4 +-  3.7
+    5 x  6  K = 3  Variantenwechsel 0.10  Standardisierung mittel      463.1 +-  3.7
+    5 x  6  K = 3  Variantenwechsel 0.10  Standardisierung hoch        452.5 +-  3.9
+    5 x  6  K = 3  Variantenwechsel 0.30  Standardisierung niedrig     528.7 +-  4.1
+    5 x  6  K = 3  Variantenwechsel 0.30  Standardisierung mittel      492.7 +-  3.5
+    5 x  6  K = 3  Variantenwechsel 0.30  Standardisierung hoch        466.9 +-  3.8
+    5 x  6  K = 3  Variantenwechsel 0.50  Standardisierung niedrig     560.6 +-  4.8
+    5 x  6  K = 3  Variantenwechsel 0.50  Standardisierung mittel      515.2 +-  3.8
+    5 x  6  K = 3  Variantenwechsel 0.50  Standardisierung hoch        475.8 +-  3.7
+
+S  SENSITIVITAETSANALYSE
+
+   B1  Die Aufteilung auf mehrere Linien verkuerzt die Programmdauer.
+   B2  Der Gewinn der Aufteilung faellt groesser aus, wenn die
+       Pruefkapazitaet ausreicht.
+   B3  Bei einer einzelnen langen Linie bringt zusaetzliche
+       Pruefkapazitaet keinen Vorteil.
+   B4  Standardisierung wirkt vor allem bei hohem Variantenanteil.
+
+   --- Referenzfall
+       1 x 30: K=1  607.5  K=3  605.6    15 x 2: K=1  491.9  K=3  430.8
+       B1  haelt
+       B2  haelt   (18.2 gegen 61.9 ZE, Faktor 3.4)
+       B3  haelt   (Differenz 1.9, KI-Summe 16.4)
+       B4  haelt   (22.9 gegen 84.8 ZE, Faktor 3.7)
+
+   --- Mindestzeit 0,65
+       1 x 30: K=1  574.4  K=3  571.6    15 x 2: K=1  488.8  K=3  411.8
+       B1  haelt
+       B2  haelt   (23.2 gegen 62.1 ZE, Faktor 2.7)
+       B3  haelt   (Differenz 2.8, KI-Summe 16.1)
+       B4  haelt   (26.7 gegen 77.6 ZE, Faktor 2.9)
+
+   --- Mindestzeit 0,85
+       1 x 30: K=1  637.8  K=3  625.9    15 x 2: K=1  490.6  K=3  443.5
+       B1  haelt
+       B2  haelt   (28.6 gegen 69.6 ZE, Faktor 2.4)
+       B3  haelt   (Differenz 11.9, KI-Summe 14.1)
+       B4  haelt   (20.5 gegen 81.3 ZE, Faktor 4.0)
+
+   --- Streuung CV 0,15
+       1 x 30: K=1  575.8  K=3  565.5    15 x 2: K=1  495.6  K=3  404.4
+       B1  haelt
+       B2  haelt   (8.2 gegen 51.6 ZE, Faktor 6.3)
+       B3  haelt   (Differenz 10.3, KI-Summe 15.8)
+       B4  haelt   (24.8 gegen 78.4 ZE, Faktor 3.2)
+
+   --- Streuung CV 0,45
+       1 x 30: K=1  658.9  K=3  660.5    15 x 2: K=1  494.9  K=3  457.2
+       B1  haelt
+       B2  haelt   (51.5 gegen 84.1 ZE, Faktor 1.6)
+       B3  haelt   (Differenz 1.6, KI-Summe 13.5)
+       B4  haelt   (18.5 gegen 80.3 ZE, Faktor 4.3)
+
+   --- Pruefdauer 1,5 ZE
+       1 x 30: K=1  603.0  K=3  604.5    15 x 2: K=1  427.3  K=3  427.9
+       B1  haelt
+       B2  haelt   (65.0 gegen 66.0 ZE, Faktor 1.0)
+       B3  haelt   (Differenz 1.5, KI-Summe 14.4)
+       B4  haelt   (25.8 gegen 82.5 ZE, Faktor 3.2)
+
+   --- Pruefdauer 3,5 ZE
+       1 x 30: K=1  696.6  K=3  606.5    15 x 2: K=1  670.8  K=3  427.9
+       B1  haelt
+       B2  haelt   (7.3 gegen 67.1 ZE, Faktor 9.2)
+       B3  HAELT NICHT   (Differenz 90.1, KI-Summe 13.5)
+           Hinweis: Der Pruefbedarf von 630 ZE uebersteigt die Dauer der langen Linie; die Pruefressource
+           bindet hier in jeder Konfiguration.
+       B4  haelt   (28.1 gegen 76.8 ZE, Faktor 2.7)
+
+   Zusammenfassung
+     B1  Aufteilung verkuerzt die Programmdauer             7 von 7
+     B2  Gewinn groesser bei ausreichender Pruefkapazitaet  7 von 7
+     B3  bei langer Linie ist Pruefkapazitaet wirkungslos   6 von 7
+     B4  Standardisierung wirkt vor allem bei vielen Varianten 7 von 7
+
+     B3 gilt nicht, wenn die Pruefressource bereits die langsamste
+     Konfiguration bindet: Pruefdauer 3,5 ZE
+
+FERTIG
