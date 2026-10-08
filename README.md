@@ -14,9 +14,9 @@ vollständigen Quellcode, die Ergebnisse eines Laufs und eine aufbereitete Ergeb
 
 ## Nutzung
 
-Zum Nachlesen der Ergebnisse eignet sich die Excel-Übersicht, das erste Blatt
-erklärt Aufbau und Begriffe. Einen schnellen Überblick gibt das
-Simulationsprotokoll. Die CSV-Dateien sind für die Weiterverarbeitung gedacht.
+Zum Nachlesen der Ergebnisse eignet sich die Excel-Übersicht, das erste Blatt erklärt Aufbau und Begriffe. 
+Einen schnellen Überblick gibt das Simulationsprotokoll. 
+Die CSV-Dateien enthalten dieselben Zahlen unformatiert und mit allen Nachkommastellen.
 
 Zum Ausführen des Modells:
 
